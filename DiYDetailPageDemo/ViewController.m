@@ -95,11 +95,15 @@
     // 没有找到已下载的图片就使用默认的占位图，当然高度也是默认的高度了，除了高度不固定的文字部分。
     if (!image) {
         image = [UIImage imageNamed:@"1"];
+        return 400;
+        
+    }else{
+        
+        //手动计算cell
+        CGFloat imgHeight = image.size.height * [UIScreen mainScreen].bounds.size.width / image.size.width;
+        return imgHeight;
     }
     
-    //手动计算cell
-    CGFloat imgHeight = image.size.height * [UIScreen mainScreen].bounds.size.width / image.size.width;
-    return imgHeight;
     //return 450;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
