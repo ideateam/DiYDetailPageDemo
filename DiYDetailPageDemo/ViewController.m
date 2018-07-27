@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "SDCycleScrollView.h"
 #import "MyTopView.h"
+#import "MyBottomView.h"
 
 #define SCW [UIScreen mainScreen].bounds.size.width
 #define SCH [UIScreen mainScreen].bounds.size.height
@@ -56,7 +57,7 @@
 -(void)makeBottomView{
     
     _myBottomView = [[MyBottomView alloc] initWithArray:self.collectionDataArray];
-    //_myBottomView.backgroundColor = [UIColor whiteColor];
+    _myBottomView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
 }
 -(void)getData{
     
