@@ -60,6 +60,7 @@
 		22558E3320FC87A8007EBDD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22558E3220FC87A8007EBDD3 /* main.m */; };
 		22558E3D20FC87A8007EBDD3 /* DiYDetailPageDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22558E3C20FC87A8007EBDD3 /* DiYDetailPageDemoTests.m */; };
 		22558E4820FC87A8007EBDD3 /* DiYDetailPageDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22558E4720FC87A8007EBDD3 /* DiYDetailPageDemoUITests.m */; };
+		2271012B210ABE1B00132BF0 /* SquareUpFBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 22710129210ABE1A00132BF0 /* SquareUpFBC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		22558E4320FC87A8007EBDD3 /* DiYDetailPageDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiYDetailPageDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22558E4720FC87A8007EBDD3 /* DiYDetailPageDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiYDetailPageDemoUITests.m; sourceTree = "<group>"; };
 		22558E4920FC87A8007EBDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22710129210ABE1A00132BF0 /* SquareUpFBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareUpFBC.m; sourceTree = "<group>"; };
+		2271012A210ABE1A00132BF0 /* SquareUpFBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareUpFBC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +369,8 @@
 				220C4E1020FD87CB009A25AF /* SDWebImage */,
 				220C4E6920FD9461009A25AF /* SDCycleScrollView */,
 				220C4D9520FD7DE3009A25AF /* API.json */,
+				2271012A210ABE1A00132BF0 /* SquareUpFBC.h */,
+				22710129210ABE1A00132BF0 /* SquareUpFBC.m */,
 				22558E2320FC87A3007EBDD3 /* AppDelegate.h */,
 				22558E2420FC87A3007EBDD3 /* AppDelegate.m */,
 				22558E2620FC87A3007EBDD3 /* ViewController.h */,
@@ -474,7 +479,7 @@
 				TargetAttributes = {
 					22558E1F20FC87A3007EBDD3 = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = AZWK98U2MN;
+						DevelopmentTeam = E2G89NQZCS;
 						ProvisioningStyle = Automatic;
 					};
 					22558E3720FC87A8007EBDD3 = {
@@ -560,6 +565,7 @@
 				220C4E5920FD87CB009A25AF /* SDWebImageDownloader.m in Sources */,
 				22558E2820FC87A3007EBDD3 /* ViewController.m in Sources */,
 				220C4E7E20FD9461009A25AF /* SDCycleScrollView.m in Sources */,
+				2271012B210ABE1B00132BF0 /* SquareUpFBC.m in Sources */,
 				220C4E4B20FD87CB009A25AF /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				220C4E6720FD87CB009A25AF /* UIView+WebCache.m in Sources */,
 				220C4E6220FD87CB009A25AF /* UIImage+ForceDecode.m in Sources */,
@@ -760,13 +766,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AZWK98U2MN;
+				DEVELOPMENT_TEAM = E2G89NQZCS;
 				INFOPLIST_FILE = DiYDetailPageDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.feibaichen.DiYDetailPageDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = www.feibaichen1.DiYDetailPageDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -775,13 +781,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AZWK98U2MN;
+				DEVELOPMENT_TEAM = E2G89NQZCS;
 				INFOPLIST_FILE = DiYDetailPageDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.feibaichen.DiYDetailPageDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = www.feibaichen1.DiYDetailPageDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -11,7 +11,7 @@
 @interface TableModel : NSObject
 @property (nonatomic,copy) NSString *productImageUrl;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
-+(instancetype)modelWithDictionary:(NSDictionary *)dictionary;
+-(instancetype)initWithUrlStr:(NSString *)urlstr;
++(instancetype)modelWithUrlStr:(NSString *)urlstr;
 
 @end

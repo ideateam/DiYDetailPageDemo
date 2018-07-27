@@ -45,8 +45,30 @@
     
     [self getData];
     
-    
+    [self makeHeadTopView];
+    [self makeBottomView];
+
     [self.view addSubview:self.mytableView];
+    
+}
+-(void)makeHeadTopView{
+    
+    _myTopView = [[MyTopView alloc] initWithBannerArray:self.topHeadBannerArray];
+    _myTopView.backgroundColor = [UIColor whiteColor];
+}
+-(void)makeBottomView{
+    
+    _myBottomView = [[UIView alloc] init];
+    _myBottomView.backgroundColor = [UIColor whiteColor];
+    _collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCW, 1530) collectionViewLayout:self.collectionViewLayout];
+    _collectionView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.scrollEnabled = NO;
+    [_collectionView registerClass:[MyCollectionViewCell class] forCellWithReuseIdentifier:@"MyCollectionViewCellID"];
+    
+    [_myBottomView addSubview:self.collectionView];
 }
 -(void)getData{
     
@@ -73,14 +95,13 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    return self.myTopView;
+    return _myTopView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 1100;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    [self.myBottomView addSubview:self.collectionView];
     return _myBottomView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -114,7 +135,6 @@
     }
     //cell.model = _tableDataArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //[cell setModel:cell.model];
     [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:_tableDataArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"1"]];
     return cell;
 }
@@ -184,26 +204,7 @@
         [_mySegmentedControl setSelectedSegmentIndex:2];
     }
 }
--(UICollectionView *)collectionView{
-    
-    if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCW, 1530) collectionViewLayout:self.collectionViewLayout];
-        _collectionView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        _collectionView.scrollEnabled = NO;
-        [_collectionView registerClass:[MyCollectionViewCell class] forCellWithReuseIdentifier:@"MyCollectionViewCellID"];
-        
-    }
-    return _collectionView;
-}
--(UICollectionViewFlowLayout *)collectionViewLayout{
-    
-    if (!_collectionViewLayout) {
-        _collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-    }
-    return _collectionViewLayout;
-}
+
 -(UITableView *)mytableView{
     if (!_mytableView) {
         _mytableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCW, SCH-64) style:UITableViewStyleGrouped];//CGRectMake(0, 0, SCW, 1300)
@@ -212,20 +213,6 @@
         [_mytableView registerClass:[MyTableViewCell class] forCellReuseIdentifier:@"MyTableViewCellID"];
     }
     return _mytableView;
-}
--(UIView *)myTopView{
-    if (!_myTopView) {
-        _myTopView = [[MyTopView alloc] initWithBannerArray:self.topHeadBannerArray];
-        _myTopView.backgroundColor = [UIColor whiteColor];
-    }
-    return _myTopView;
-}
--(UIView *)myBottomView{
-    if (!_myBottomView) {
-        _myBottomView = [[UIView alloc] init];
-        //_myBottomView.backgroundColor = [UIColor blueColor];
-    }
-    return _myBottomView;
 }
 -(UISegmentedControl *)mySegmentedControl{
     if (!_mySegmentedControl) {

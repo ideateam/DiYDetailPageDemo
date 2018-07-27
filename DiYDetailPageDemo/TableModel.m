@@ -9,18 +9,18 @@
 #import "TableModel.h"
 
 @implementation TableModel
--(instancetype)initWithDictionary:(NSDictionary *)dictionary{
+-(instancetype)initWithUrlStr:(NSString *)urlstr{
     
     self = [super init];
     if (self) {
         
-        self.productImageUrl = [NSString stringWithFormat:@"%@",dictionary[@"detailImageArr"]];
-        NSLog(@"%lu",(unsigned long)self.productImageUrl.length);
+        self.productImageUrl = [NSString stringWithFormat:@"%@",urlstr];
+        //NSLog(@"%lu",(unsigned long)self.productImageUrl.length);
     }
     return self;
 }
-+(instancetype)modelWithDictionary:(NSDictionary *)dictionary{
++(instancetype)modelWithUrlStr:(NSString *)urlstr{
     
-    return [[self alloc] initWithDictionary:dictionary];
+    return [[self alloc] initWithUrlStr:urlstr];
 }
 @end
