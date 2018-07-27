@@ -10,25 +10,23 @@
 #import "MyTableViewCell.h"
 #import "TableModel.h"
 #import "CollectionModel.h"
-#import "MyCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "SDCycleScrollView.h"
 #import "MyTopView.h"
+#import "MyBottomView.h"
 
 #define SCW [UIScreen mainScreen].bounds.size.width
 #define SCH [UIScreen mainScreen].bounds.size.height
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *mytableView;
 @property (nonatomic,strong) NSArray *tableDataArray;
 @property (nonatomic,strong) NSArray *topHeadBannerArray;
 @property (nonatomic,strong) MyTopView *myTopView;
-@property (nonatomic,strong) UIView *myBottomView;
+@property (nonatomic,strong) MyBottomView *myBottomView;
 @property (nonatomic,strong) UISegmentedControl *mySegmentedControl;
 @property (nonatomic,strong) UILabel *mySegmentedControlLine;
-@property (nonatomic,strong) UICollectionView *collectionView;
-@property (nonatomic,strong) UICollectionViewFlowLayout *collectionViewLayout;
 @property (nonatomic,strong) NSArray *collectionDataArray;
 @end
 
@@ -58,17 +56,8 @@
 }
 -(void)makeBottomView{
     
-    _myBottomView = [[UIView alloc] init];
+    _myBottomView = [[MyBottomView alloc] init];
     _myBottomView.backgroundColor = [UIColor whiteColor];
-    _collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCW, 1530) collectionViewLayout:self.collectionViewLayout];
-    _collectionView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    _collectionView.scrollEnabled = NO;
-    [_collectionView registerClass:[MyCollectionViewCell class] forCellWithReuseIdentifier:@"MyCollectionViewCellID"];
-    
-    [_myBottomView addSubview:self.collectionView];
 }
 -(void)getData{
     
@@ -141,31 +130,6 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;
 }
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    MyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCollectionViewCellID" forIndexPath:indexPath];
-    cell.backgroundColor =[UIColor whiteColor];
-    cell.model = _collectionDataArray[indexPath.row];
-    return cell;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
-    return 10;
-}
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return CGSizeMake((SCW - 20)/2, ((SCW - 20)/2) * 1.50);
-}
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    
-    return UIEdgeInsetsMake(5, 5, 5, 5);
-}
-
-//
 -(void)SegmentOnClick:(UISegmentedControl *)segmentedControl{
     
     NSLog(@"segmentedControl.selectedSegmentIndex = %ld",(long)segmentedControl.selectedSegmentIndex);
@@ -211,6 +175,13 @@
         _mytableView.delegate = self;
         _mytableView.dataSource = self;
         [_mytableView registerClass:[MyTableViewCell class] forCellReuseIdentifier:@"MyTableViewCellID"];
+        //解决上拉跳跃式加载问题
+        if (@available(iOS 11.0, *)) {
+            _mytableView.estimatedRowHeight = 0;
+            _mytableView.estimatedSectionFooterHeight = 0;
+            _mytableView.estimatedSectionHeaderHeight = 0;
+            _mytableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _mytableView;
 }
